@@ -145,7 +145,7 @@
         }
 
 
-        .dashboardNavbar {
+        .homeNavbar {
             background-color: #AAD9BB;
         }
 

@@ -70,6 +70,8 @@
 
     <h1>Reviews</h1>
 
+    {{ $companyID }}
+
     <table>
         <tr>
             <th>Overall Rating</th>
@@ -90,6 +92,6 @@
         @endforeach
     </table>
 
-    <a class="addReview" href="/reviews/create">Add Review</a>
+    <a class="addReview" href="/review/form/{{ $companyID }}">Add Review</a>
 
 </body>

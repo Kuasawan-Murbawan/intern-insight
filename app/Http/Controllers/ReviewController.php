@@ -4,25 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Reviews;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ReviewController extends Controller
 {
 
     public function store()
     {
+
+        $reviewID = Str::random(5);
+        $companyID = request()->get('companyID');
+
         $review = Reviews::create([
             'userID' => request()->get('userID'),
-            'reviewID' => request()->get('reviewID'),
+            'reviewID' => $reviewID,
             'overallRating' => request()->get('overallRating'),
             'jobTitle' => request()->get('jobTitle'),
             'allowance' => request()->get('allowance'),
             'review' => request()->get('review'),
             'tips' => request()->get('tips'),
-            'companyID' => request()->get('companyID')
+            'companyID' => $companyID
         ]);
         $review->save();
 
+
+        // TODO: use flash message
         echo "Review created successfully";
+        return redirect()->route('review.show', ['companyID' => $companyID]);
     }
 
     public function showReview($companyID)
@@ -31,11 +40,15 @@ class ReviewController extends Controller
         if ($reviews->isEmpty()) {
             echo "No reviews found";
         } else {
-            return view('/reviews', ['reviews' => $reviews]);
+            return view('/reviews', ['reviews' => $reviews, 'companyID' => $companyID]);
         }
     }
 
-
+    public function showUserForm($companyID)
+    {
+        $userID = Auth::id();
+        return view('/user_pages/submit-review', ['companyID' => $companyID, 'userID' => $userID]);
+    }
 
 
 

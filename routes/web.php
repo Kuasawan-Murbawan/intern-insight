@@ -43,6 +43,10 @@ Route::post('/studentRegister', [UserRegistrationController::class, 'store'])->n
 Route::get('/student', [UserRegistrationController::class, 'showStudent'])->name('student.show');
 
 
+// Show website
+Route::get('/home', function () {
+    return view('components/company-listing');
+})->name('home');
 
 // Insert pre-defined reviews
 Route::get('/review/init', [ReviewController::class, 'init'])->name('review.init');
@@ -79,6 +83,9 @@ Route::get('details/petronas', [CompaniesController::class, 'showDetailsPetronas
 Route::get('details/shell', [CompaniesController::class, 'showDetailsShell'])->name('company.details.shell');
 Route::get('details/tnb', [CompaniesController::class, 'showDetailsTNB'])->name('company.details.tnb');
 
+
 // User - Add Review (TODO)
+Route::get('/review/form/{companyID}', [ReviewController::class, 'showUserForm'])->name('review.form');
+Route::post('/review/create', [ReviewController::class, 'store'])->name('review.create');
 
 // User - Delete Review (TODO)

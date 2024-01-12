@@ -161,8 +161,8 @@
 <body>
 
     @include('components.navbar')
-
-
+    @include('components.new-comp-listing')
+    {{-- 
     <div class="section">
         <div class = "title">
             <h1>List of Companies</h1>
@@ -209,7 +209,7 @@
                 <a href="{{ route('company.details.tnb') }}" class="button">Get Insight</a>
             </div>
         </div>
-    </div>
+    </div> --}}
 </body>
 
 </html>

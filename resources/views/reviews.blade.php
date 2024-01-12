@@ -8,6 +8,11 @@
         list-style: none;
     }
 
+    body {
+        max-width: 100%;
+        background-color: #6DA4AA;
+    }
+
     h1 {
         text-align: center;
         margin: 30px;
@@ -21,6 +26,7 @@
         margin-bottom: 40px;
         margin: 40px auto;
         border-radius: 20px;
+        box-shadow: #0F1035 0px 0px 10px;
     }
 
     th,
@@ -38,6 +44,10 @@
 
     tr:nth-child(even) {
         background-color: #f5f5f5;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #b1abab;
     }
 
     td {

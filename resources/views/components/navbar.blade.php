@@ -48,7 +48,7 @@
         <li><a class="dashboardNavbar" href="{{ route('dashboard') }}">Dashboard</a></li>
         <li><a class="homeNavbar" href="{{ route('home') }}">Home</a></li>
         <li><a class="compNavbar" href=" {{ route('company.user') }} ">Companies</a></li>
-        <li><a class="adminNavbar" href="#">Admin</a></li>
+        <li><a class="adminNavbar" href=" {{ route('company.admin') }} ">Admin</a></li>
         <li><a class="profileNavbar" href="#">Profile</a></li>
     </ul>
 </nav>

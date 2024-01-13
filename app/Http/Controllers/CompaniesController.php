@@ -10,11 +10,26 @@ use Psy\TabCompletion\Matcher\FunctionsMatcher;
 class CompaniesController extends Controller
 {
 
+    public function home()
+    {
+        return view('/components/company-listing', ['companies' => Companies::all()]);
+    }
+
     public function showForm()
     {
         return view('/admin_pages/submit-company');
     }
 
+    // public function showDetails($companyID)
+    // {
+    //     $company = Companies::find($companyID);
+
+    //     if ($company) {
+    //         return view("'/details/' . $companyID");
+    //     } else {
+    //         echo "Company not found!";
+    //     }
+    // }
 
 
     public function showCompaniesAdmin()
@@ -50,6 +65,7 @@ class CompaniesController extends Controller
     {
         return view('choose');
     }
+
 
     public function showDetailsMaybank()
     {

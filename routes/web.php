@@ -31,8 +31,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('companies/user', [CompaniesController::class, 'showCompaniesUser'])->name('company.user');
 });
 
+// Show company for admin view
+Route::get('/companies/admin', [CompaniesController::class, 'showCompaniesAdmin'])->name('company.admin')->middleware('admin');
 
 
 // Lab Test
@@ -44,9 +47,7 @@ Route::get('/student', [UserRegistrationController::class, 'showStudent'])->name
 
 
 // Show website
-Route::get('/home', function () {
-    return view('components/company-listing');
-})->name('home');
+Route::get('/home', [CompaniesController::class, 'home'])->name('home');
 
 // Insert pre-defined reviews
 Route::get('/review/init', [ReviewController::class, 'init'])->name('review.init');
@@ -54,11 +55,6 @@ Route::get('/review/init', [ReviewController::class, 'init'])->name('review.init
 // Show Reviews filter by company
 Route::get('/review/{companyID}', [ReviewController::class, 'showReview'])->name('review.show');
 
-
-// Show listed companies
-Route::get('companies/admin', [CompaniesController::class, 'showCompaniesAdmin'])->name('company.admin');
-
-Route::get('companies/user', [CompaniesController::class, 'showCompaniesUser'])->name('company.user');
 
 // Insert Companies
 Route::get('/companies/form', [CompaniesController::class, 'showForm'])->name('company.form');
@@ -77,11 +73,14 @@ Route::post('/companies/update/{companyID}', [CompaniesController::class, 'updat
 // Admin - Delete Companies (TODO)
 
 // Companies Details
-Route::get('details/maybank', [CompaniesController::class, 'showDetailsMaybank'])->name('company.details.maybank');
-Route::get('details/tm', [CompaniesController::class, 'showDetailsTM'])->name('company.details.tm');
-Route::get('details/petronas', [CompaniesController::class, 'showDetailsPetronas'])->name('company.details.petronas');
-Route::get('details/shell', [CompaniesController::class, 'showDetailsShell'])->name('company.details.shell');
-Route::get('details/tnb', [CompaniesController::class, 'showDetailsTNB'])->name('company.details.tnb');
+
+// TODO: Route::get('details/{companyID}', [CompaniesController::class, 'showDetails'])->name('company.details');
+
+Route::get('details/myb1', [CompaniesController::class, 'showDetailsMaybank'])->name('company.details.maybank');
+Route::get('details/tm1', [CompaniesController::class, 'showDetailsTM'])->name('company.details.tm');
+Route::get('details/ptr1', [CompaniesController::class, 'showDetailsPetronas'])->name('company.details.petronas');
+Route::get('details/shl1', [CompaniesController::class, 'showDetailsShell'])->name('company.details.shell');
+Route::get('details/tnb1', [CompaniesController::class, 'showDetailsTNB'])->name('company.details.tnb');
 
 
 // User - Add Review (TODO)

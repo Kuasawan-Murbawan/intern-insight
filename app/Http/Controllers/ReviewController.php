@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Reviews;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Models\Companies;
 
 class ReviewController extends Controller
 {
@@ -34,20 +35,36 @@ class ReviewController extends Controller
         return redirect()->route('review.show', ['companyID' => $companyID]);
     }
 
+
+
     public function showReview($companyID)
     {
         $reviews = Reviews::where('companyID', $companyID)->get();
+        $companies = Companies::where('companyID', $companyID)->first();
+        $companyIDcurrent = $companyID;
+
         if ($reviews->isEmpty()) {
             echo "No reviews found";
         } else {
-            return view('/reviews', ['reviews' => $reviews, 'companyID' => $companyID]);
+            return view('/reviews', ['reviews' => $reviews, 'companyIDcurrent' => $companyIDcurrent, 'companies' => $companies]);
         }
     }
+
+
 
     public function showUserForm($companyID)
     {
         $userID = Auth::id();
         return view('/user_pages/submit-review', ['companyID' => $companyID, 'userID' => $userID]);
+    }
+
+    public function delete($reviewID)
+    {
+        $review = Reviews::find($reviewID);
+        $companyID = $review->companyID;
+        $review->delete();
+        echo "deleted";
+        return redirect()->route('review.show', ['companyID' => $companyID]);
     }
 
 

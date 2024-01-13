@@ -156,9 +156,20 @@
             border-radius: 10px;
         }
     </style>
+
+
 </head>
 
 <body>
+
+    @if (session()->has('error'))
+        <div role="alert" id="unauthorised_access_alert">
+            {{ session('error') }}
+        </div>
+        <script>
+            displayUnauthorizedAccessAlert();
+        </script>
+    @endif
 
     @include('components.navbar')
     @include('components.new-comp-listing')

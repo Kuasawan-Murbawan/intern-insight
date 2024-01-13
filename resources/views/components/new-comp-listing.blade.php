@@ -156,62 +156,23 @@
         <div class = "title">
             <h1>List of Companies</h1>
         </div>
-        <div class="companies">
-            <div class="card">
-                <img src="{{ URL('images/maybank-logo.jpg') }}" alt="">
-                <h2>Maybank</h2>
-                <h4>Banking & Finance</h4>
-                <ul>
-                    <li>Employee: 44,000</li>
-                    <li>Location: Kuala Lumpur, Malaysia</li>
-                </ul>
-                <a href="{{ route('company.details.maybank') }}" class="button">Get Insight</a>
-            </div>
-            <div class="card">
-                <img src="{{ URL('images/tm-logo.png') }}" alt="">
-                <h2>TM</h2>
-                <h4>Telecommunication</h4>
-                <ul>
-                    <li>Employee: 19,500</li>
-                    <li>Location: Kuala Lumpur, Malaysia</li>
-                </ul>
-                <a href="{{ route('company.details.tm') }}" class="button">Get Insight</a>
-            </div>
-            <div class="card">
-                <img src="{{ URL('images/petronas-logo.jpg') }}" alt="">
-                <h2>Petronas</h2>
-                <h4>Oil & Gas</h4>
-                <ul>
-                    <li>Employee: 46,000</li>
-                    <li>Location: Kuala Lumpur, Malaysia</li>
-                </ul>
-                <a href="{{ route('company.details.petronas') }}" class="button">Get
-                    Insight</a>
-            </div>
-            <div class="card">
-                <img src="{{ URL('images/shell-logo.jpg') }}" alt="">
-                <h2>Shell</h2>
-                <h4>Oil & Gas</h4>
-                <ul>
-                    <li>Employee: 93,000</li>
-                    <li>Location: Kuala Lumpur, Malaysia</li>
-                </ul>
-                <a href="{{ route('company.details.shell') }}" class="button">Get Insight</a>
-            </div>
-            <div class="card">
-                <img src="{{ URL('images/tnb-logo.jpg') }}" alt="">
-                <h2>TNB</h2>
-                <h4>Energy</h4>
-                <ul>
-                    <li>Employee: 34,700</li>
-                    <li>Location: Kuala Lumpur, Malaysia</li>
-                </ul>
-                <a href="{{ route('company.details.tnb') }}" class="button">Get Insight</a>
-            </div>
-        </div>
     </div>
 
+    <div class="companies">
+        @foreach ($companies as $company)
+            <div class="card">
+                <img src="{{ URL('images/' . $company->logo) }}" alt="">
+                <h2>{{ $company->name }}</h2>
+                <h4>{{ $company->sector }}</h4>
+                <ul>
+                    <li>Employee: {{ $company->employees }}</li>
+                    <li>Location: {{ $company->location }}</li>
+                </ul>
+                <a href="/details/{{ $company->companyID }}" class="button">Get Insight</a>
+            </div>
+        @endforeach
 
+    </div>
 
 
 </body>

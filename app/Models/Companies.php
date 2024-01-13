@@ -18,6 +18,11 @@ class Companies extends Model
         'employees',
         'location',
         'website',
-        'reviews'
+        'reviews',
+        'logo'
+    ];
+
+    protected $casts = [
+        'companyID' => 'string'
     ];
 }

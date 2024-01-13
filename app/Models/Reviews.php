@@ -21,4 +21,8 @@ class Reviews extends Model
         'tips',
         'companyID'
     ];
+
+    protected $casts = [
+        'reviewID' => 'string'
+    ];
 }

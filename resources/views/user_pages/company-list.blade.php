@@ -1,61 +1,67 @@
-<style>
-    * {
-        margin: 0px;
-        padding: 0px;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-decoration: none;
-        list-style: none;
-    }
+<head>
 
-    body {
-        max-width: 100%;
-        background-color: #6DA4AA;
-    }
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            max-width: 100%;
+            background-color: #6DA4AA;
+        }
 
 
-    h1 {
-        text-align: center;
-        margin: 30px;
-    }
+        h1 {
+            text-align: center;
+            margin: 30px;
+        }
 
-    table {
-        width: 80%;
-        border-collapse: collapse;
-        margin-bottom: 40px;
-        margin: 40px auto;
-    }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            margin: 40px auto;
+        }
 
-    th,
-    td {
-        padding: 10px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
 
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-        text-align: center;
-    }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: center;
+        }
 
-    tr {
-        background-color: #ffffff;
-    }
+        tr {
+            background-color: #ffffff;
+        }
 
-    a {
-        text-decoration: none;
-        color: #007bff;
-    }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
 
-    .compNavbar {
-        background-color: #AAD9BB;
-    }
+        .compNavbar {
+            background-color: #AAD9BB;
+        }
 
-    .centerA {
-        text-align: center;
-    }
-</style>
+        .centerA {
+            text-align: center;
+        }
+    </style>
+
+
+
+</head>
 
 <body>
 
@@ -70,7 +76,7 @@
             <th>No. of Employees</th>
             <th>Location</th>
             <th>Website</th>
-            <th>No. of Reviews</th>
+            <th>Reviews</th>
         </tr>
 
         @foreach ($companies as $company)
@@ -80,7 +86,7 @@
                 <td class="centerA">{{ $company->employees }}</td>
                 <td>{{ $company->location }}</td>
                 <td>{{ $company->website }}</td>
-                <td class="centerA"><a href="/review/{{ $company->companyID }}">{{ $company->reviews }}</a></td>
+                <td class="centerA"><a href="/review/{{ $company->companyID }}">Show more</a></td>
             </tr>
         @endforeach
     </table>

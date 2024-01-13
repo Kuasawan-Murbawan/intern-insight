@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Companies;
+use App\Models\Reviews;
 
 use Illuminate\Http\Request;
 use Psy\TabCompletion\Matcher\FunctionsMatcher;
@@ -20,16 +21,31 @@ class CompaniesController extends Controller
         return view('/admin_pages/submit-company');
     }
 
-    // public function showDetails($companyID)
-    // {
-    //     $company = Companies::find($companyID);
+    public function showDetails($companyID)
+    {
+        $company = Companies::find($companyID);
 
-    //     if ($company) {
-    //         return view("'/details/' . $companyID");
-    //     } else {
-    //         echo "Company not found!";
-    //     }
-    // }
+        switch ($companyID) {
+            case 'myb1':
+                return view('/companies/maybank-details', ['company' => $company]);
+                break;
+            case 'tm1':
+                return view('/companies/TM-details', ['company' => $company]);
+                break;
+            case 'ptr1':
+                return view('/companies/petronas-details', ['company' => $company]);
+                break;
+            case 'shl1':
+                return view('/companies/shell-details', ['company' => $company]);
+                break;
+            case 'tnb1':
+                return view('/companies/tnb-details', ['company' => $company]);
+                break;
+            default:
+                echo "Company not found!";
+                break;
+        }
+    }
 
 
     public function showCompaniesAdmin()
@@ -61,9 +77,47 @@ class CompaniesController extends Controller
         return view('/admin_pages/show-company', ['companies' => Companies::all()]);
     }
 
-    public function chooseUser()
+    public function updateCompany(Request $request, $companyID)
     {
-        return view('choose');
+        $company = Companies::find($companyID);
+
+        if ($company) {
+            $company->update([
+                'name' => $request->get('name'),
+                'sector' => $request->get('sector'),
+                'employees' => $request->get('employees'),
+                'location' => $request->get('location'),
+                'website' => $request->get('website'),
+                'logo' => $request->get('logo')
+            ]);
+            echo "Company updated successfully!";
+        } else {
+            echo "Company not found!";
+        }
+        return view('/admin_pages/show-company', ['companies' => Companies::all()]);
+    }
+
+
+    public function delete($companyID)
+    {
+        $company = Companies::find($companyID);
+
+        if ($company) {
+            $company->delete();
+            echo "Company deleted successfully!";
+        } else {
+            echo "Company not found!";
+        }
+        return view('/admin_pages/show-company', ['companies' => Companies::all()]);
+    }
+
+    public function updateReviewCount()
+    {
+        $companies = Companies::all(); // Get all companies
+
+        foreach ($companies as $company) {
+            $this->updateReviewCount($company); // Update review count for each company
+        }
     }
 
 
@@ -92,27 +146,9 @@ class CompaniesController extends Controller
         return view('/companies/tnb-details');
     }
 
-    public function showUpdateForm()
-    {
-        return view('/admin_pages/update-company');
-    }
-
-    public function updateCompany(Request $request, $companyID)
+    public function showUpdateForm($companyID)
     {
         $company = Companies::find($companyID);
-
-        if ($company) {
-            $company->update([
-                'name' => $request->get('name'),
-                'sector' => $request->get('sector'),
-                'employees' => $request->get('employees'),
-                'location' => $request->get('location'),
-                'website' => $request->get('website'),
-            ]);
-            echo "Company updated successfully!";
-        } else {
-            echo "Company not found!";
-        }
-        return view('/admin_pages/show-company', ['companies' => Companies::all()]);
+        return view('/admin_pages/update-company', ['company' => $company]);
     }
 }

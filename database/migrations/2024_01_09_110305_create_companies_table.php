@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location');
             $table->string('website');
             $table->unsignedInteger('reviews')->default('0');
+            $table->string('logo')->default('unset');
         });
     }
 

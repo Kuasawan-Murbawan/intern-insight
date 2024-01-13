@@ -10,20 +10,20 @@
 
     body {
         max-width: 100%;
+        height: 100%;
         background-color: #6DA4AA;
     }
 
     h1 {
         text-align: center;
-        margin: 30px;
         font-size: 32px;
         font-weight: bold;
+        margin-top: 20px;
     }
 
     table {
         width: 80%;
         border-collapse: collapse;
-        margin-bottom: 40px;
         margin: 40px auto;
         border-radius: 20px;
         box-shadow: #0F1035 0px 0px 10px;
@@ -71,6 +71,11 @@
         color: #0F1035;
         font-weight: bold;
         text-decoration: none;
+        margin-bottom: 20px;
+    }
+
+    .delete-link {
+        color: red;
     }
 </style>
 
@@ -78,9 +83,7 @@
 
     @include('components.navbar')
 
-    <h1>Reviews</h1>
-
-    {{ $companyID }}
+    <h1>Reviews for {{ $companies->name }}</h1>
 
     <table>
         <tr>
@@ -89,6 +92,7 @@
             <th>Allowance</th>
             <th>Review</th>
             <th>Tips</th>
+            <th>Actions</th>
         </tr>
 
         @foreach ($reviews as $review)
@@ -98,10 +102,18 @@
                 <td class="centerB">{{ $review->allowance }}</td>
                 <td>{{ $review->review }}</td>
                 <td>{{ $review->tips }}</td>
+                <td class="delete">
+                    @if ($review->userID == Auth::user()->id || Auth::user()->name === 'admin')
+                        <a class="delete-link" href="/review/delete/{{ $review->reviewID }}">Delete</a>
+                    @endif
+                </td>
             </tr>
         @endforeach
     </table>
 
-    <a class="addReview" href="/review/form/{{ $companyID }}">Add Review</a>
+    @if (Auth::user()->name !== 'admin')
+        <a class="addReview" href="/review/form/{{ $companyIDcurrent }}">Add Review</a>
+    @endif
+
 
 </body>

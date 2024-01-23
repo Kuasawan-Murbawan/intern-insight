@@ -1,66 +1,80 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Intern Insights
+<b>Contents<b/>
+1. [Introduction](##Introduction)
+2. [Features & Functionalities](##Features & Functionalities)
+3. [MVC]
+	a. [Model](###Model)
+	b. [Controller](###Controller)
+	c. [View](###View)
+4. [Demonstration](##Demonstration)
+5. [Summary](##Summary)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Introduction
+An internship is a pre-career experience in which most students are bound to involve themselves sooner or later in their tertiary education. Some may have their targeted organisations or companies which they aimed after some time however some are still clueless not just on which company to apply but also how to apply and the processes that come along with it. Therefore, we believe it is important to provide **a platform that provides students with insight into internship journeys based on those who have already experienced it**. We hope this effort shall benefit those in favor of commencing their internships by broadening their knowledge to acknowledge the available opportunities and may ease their journey
 
-## About Laravel
+## Features & Functionalities
+1.  **User Registration**: Allow users to create an account on your website using their email address or social media accounts. This will enable them to submit reviews and ratings.
+    
+2.  **Internship Search**: Provide a search bar that allows users to search for internships by company name, location, industry, or job title.
+    
+3.  **Internship Listings**: Display a list of internships that are available for review. Include information such as company name, job title, location, duration, and compensation.
+    
+4.  **Internship Reviews**: Allow users to write detailed reviews of their internships, including pros and cons, tips for future interns, and overall impressions.
+    
+5.  **Review Submission**: Allow users to submit reviews of their internships. Include fields such as company name, job title, location, duration, compensation, work environment, job responsibilities, and overall rating.
+    
+6.  **Internship Ratings**: Allow users to rate the internships based on different criteria such as work-life balance, compensation, job responsibilities, and company culture.
+    
+7.  **Review Display**: Display the submitted reviews on the website, along with the user’s name and profile picture. Allow users to sort the reviews by date, rating, or relevance.
+    
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+8. **Review Moderation**: Review the submitted reviews to ensure that they are appropriate and do not contain any offensive or inappropriate content.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## MVC Concept
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Model
+Our project consists of 2 user-defined models which is the Reviews & Companies model.
+![database_intern_insigts drawio](https://github.com/Kuasawan-Murbawan/intern-insight/assets/74280845/77473ef3-c571-4a80-abb3-0751e111097b)
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Relationships**
+-   1 company can have many reviews
+    
+-   1 review can correspond to 1 company
+    
+-   1 user can make 1 review
+    
+-   1 review corresponds to 1 user
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Controllers
+We also have 2 controller which corresponds to each model
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Companies Controller**
 
-## Laravel Sponsors
+| Function Name      | Parameters |       Return      | Function                                  |
+|--------------------|:----------:|:-----------------:|-------------------------|
+| home               |      -     | all companies     | redirect to home                          |
+| showCompaniesUser  |      -     | all companies     | show companies for user’s interface       |
+| showDetails        | $companyID | 1 company details | show company details                      |
+| showCompaniesAdmin |      -     | all companies     | show companies for admin’s interface      |
+| showForm           |      -     |         -         | show form to insert companies             |
+| insertCompanies    |      -     | 1 company details | insert companies using admin-input values |
+| showUpdateForm     | $companyID | 1 company details | show form to update company               |
+| updateCompany      | $companyID | all companies     | update companies using admin-input values |
+| delete             | $companyID | all companies     | delete company         |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Reviews Controller**
+| Function Name | Parameters |  Return  |    Function     |
+|:-------------:|:----------:|:---------------------:|:-------------:|
+| store         |      -     | Review details	| Stores a new review submitted by a user                   |
+| showReview    | $companyID | Reviews for the specified company | Displays reviews for a particular company                 |
+| showUserForm  | $companyID | User review form	 | Shows the form for users to submit a review for a company |
+| delete        | $companyID | Redirect to company reviews       | Deletes a specific review                                 |
+| init          |      -     |none | Initializes the database with sample review data          |
 
-### Premium Partners
+## Demonstration
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+https://youtu.be/fwyKlRZXuC0
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Summary
+This project aims to bridge the gap between internship seekers and organizations offering internships. By providing a comprehensive platform for sharing experiences and accessing information, it aims to empower students, adults, and organizations alike. Despite anticipated constraints in budget, time, user engagement, and data security, the project will progress through key stages of planning, development, testing, deployment, and continuous enhancement, ensuring a valuable resource for all stakeholders involved in the internship ecosystem.

@@ -1,11 +1,11 @@
 # Intern Insights
 <b>Contents<b/>
 1. Introduction
-2. [Features & Functionalities[]([#Features & Functionalities](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#demonstration))](https://github.com/Kuasawan-Murbawan/intern-insight#features--functionalities)
-3. [MVC]
-	a. [Model](###Model)
-	b. [Controller](###Controller)
-	c. [View](###View)
+2. Features & Functionalities
+3. MVC
+	a. Model
+	b. Controller
+	c. View
 4. [Demonstration](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#demonstration)
 5. [Summary](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#summary)
 

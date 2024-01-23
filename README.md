@@ -1,13 +1,13 @@
 # Intern Insights
 <b>Contents<b/>
-1. [Introduction](##Introduction)
-2. [Features & Functionalities](##Features & Functionalities)
+1. Introduction
+2. [Features & Functionalities[]([#Features & Functionalities](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#demonstration))](https://github.com/Kuasawan-Murbawan/intern-insight#features--functionalities)
 3. [MVC]
 	a. [Model](###Model)
 	b. [Controller](###Controller)
 	c. [View](###View)
-4. [Demonstration](##Demonstration)
-5. [Summary](##Summary)
+4. [Demonstration](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#demonstration)
+5. [Summary](https://github.com/Kuasawan-Murbawan/intern-insight/blob/master/README.md#summary)
 
 ## Introduction
 An internship is a pre-career experience in which most students are bound to involve themselves sooner or later in their tertiary education. Some may have their targeted organisations or companies which they aimed after some time however some are still clueless not just on which company to apply but also how to apply and the processes that come along with it. Therefore, we believe it is important to provide **a platform that provides students with insight into internship journeys based on those who have already experienced it**. We hope this effort shall benefit those in favor of commencing their internships by broadening their knowledge to acknowledge the available opportunities and may ease their journey
